@@ -45,15 +45,21 @@ class TitleFragment : Fragment() {
         binding.playButton.setOnClickListener{ view : View ->
             view.findNavController().navigate(R.id.action_titleFragment_to_gameFragment)
         }
+        // Code the onClick handler for the menu item:
+        // 1.In the fragment or activity that displays the options menu, enable the options menu.
         setHasOptionsMenu(true)
         return binding.root
     }
 
+    // 2.Implement onCreateOptionsMenu() to inflate the options menu:
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.options_menu, menu)
     }
 
+    // 3.Override the onOptionsItemSelected() method to take the appropriate action when
+    // the menu item is clicked. The following code displays the fragment that has the
+    // same ID as the menu item.
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,
                 view!!.findNavController())

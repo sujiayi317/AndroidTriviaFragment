@@ -39,14 +39,17 @@ class MainActivity : AppCompatActivity() {
         // 2.link the navigation controller to the app bar:
 //        NavigationUI.setupActionBarWithNavController(this,navController)
 
+        // Connect the drawer to the navigation controller:
         NavigationUI.setupWithNavController(binding.navView, navController)
 
+        // ===Set up the drawer button in the app bar:
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
     }
     // 3.override the onSupportNavigateUp() method to call navigateUp() in the navigation controller:
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.myNavHostFragment)
 //        return navController.navigateUp()
+        // To make the Up button work with the drawer button
         return NavigationUI.navigateUp(navController, drawerLayout)
     }
 
